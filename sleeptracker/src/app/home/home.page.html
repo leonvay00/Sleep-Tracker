@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="text-align:center">
+      Sleep Tracker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Sleep Tracker</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-content style="font-size: small;">
+      Please select corresponding start date and time that you fell asleep and the end date and time that you woke up.
+      Once done press "Record".
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label>Start Date</ion-label>
+    <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Date" [(ngModel)]="startDate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Start Time</ion-label>
+    <ion-datetime displayFormat="h:mm A" placeholder="Time" [(ngModel)]="startTime"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>End Date</ion-label>
+    <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Date" [(ngModel)]="endDate"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End Time</ion-label>
+    <ion-datetime displayFormat="h:mm A" placeholder="Time" [(ngModel)]="endTime"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" (click)="recorder()">Record</ion-button>
+
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button selected="true">
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>Sleep Recorder</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navi('sleepiness')">
+        <ion-icon name="bed-outline"></ion-icon>
+        <ion-label>Sleepiness</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navi('logs')">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+        <ion-label>Sleep Log</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="medium">Sleepiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      Please use this section to log the sleepiness you feel throughout the day. Simply select the sleepiness
+      level from the drop down menu and input the time, during the day, that you felt the sleepiness.
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-list>
+    <ion-list-header>Log Sleepiness</ion-list-header>
+    <ion-item>
+      <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="sleepiness">
+        <ion-select-option value="1">1 Feeling active, vital, alert, or wide awake</ion-select-option>
+        <ion-select-option value="2">2 Functioning at high levels, but not at peak; able to concentrate</ion-select-option>
+        <ion-select-option value="3">3 Awake, but relaxed; responsive but not fully alert</ion-select-option>
+        <ion-select-option value="4">4 Somewhat foggy, let down</ion-select-option>
+        <ion-select-option value="5">5 Foggy; losing interest in remaining awake; slowed down</ion-select-option>
+        <ion-select-option value="6">6 Sleepy, woozy, fighting sleep; prefer to lie down</ion-select-option>
+        <ion-select-option value="7">7 No longer fighting sleep, sleep onset soon; having dream-like thoughts</ion-select-option>
+      </ion-select> 
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Sleepiness Time</ion-label>
+    <ion-datetime displayFormat="h:mm A" placeholder="Time" [(ngModel)]="time"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" (click)="recorder()">Record</ion-button>
+
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="navi('home')"> 
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>Sleep Recorder</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button selected="true"> 
+        <ion-icon name="bed-outline"></ion-icon>
+        <ion-label>Sleepiness</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navi('logs')"> 
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+        <ion-label>Sleep Log</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

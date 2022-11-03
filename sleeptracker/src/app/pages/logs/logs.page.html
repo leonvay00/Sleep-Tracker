@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleep Logs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" value="sleepData">
+      <ion-segment-button value="sleepData">
+        <ion-label>Sleep Data</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sleepinessData">
+        <ion-label>Sleepiness Data</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div *ngIf="showOvernightData">
+    <ion-card *ngIf="overnightData.length == 0">
+      <ion-card-title>No Data Found</ion-card-title>
+    </ion-card>
+    <ion-card *ngFor="let data of overnightData">
+      <ion-card-header>
+        <ion-card-subtitle>{{ data.dateString() }}</ion-card-subtitle>
+        <ion-card-title>{{ data.summaryString() }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <div *ngIf="showSleepinessData">
+    <ion-card *ngIf="sleepinessData.length == 0">
+      <ion-card-title>No Data Found</ion-card-title>
+    </ion-card>
+    <ion-card *ngFor="let data of sleepinessData">
+      <ion-card-header>
+        <ion-card-subtitle>{{ data.dateString() }}</ion-card-subtitle>
+        <ion-card-title>{{ data.summaryString() }}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+</ion-content>
+
+<ion-toolbar>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="navi('home')">
+        <ion-icon name="alarm-outline"></ion-icon>
+        <ion-label>Sleep Recorder</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="navi('sleepiness')">
+        <ion-icon name="bed-outline"></ion-icon>
+        <ion-label>Sleepiness</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button selected="true">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+        <ion-label>Sleep Log</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>
